@@ -2,13 +2,28 @@
 //imporoved version
 import dotenv from "dotenv";
 import connectDB from "./db/index.js";
+import express from "express";
+const app=express();
+
+// export{ app };
 // when we use dotenv improved version then need to configure that 
 dotenv.config({
     path:'./.env'
 })
-console.log("heelo");
-console.log(process.env.MONGODB_URL+" fdgdrtg");
-connectDB();
+// console.log("heelo");
+// console.log(process.env.MONGODB_URL+" fdgdrtg");
+connectDB()
+.then(()=>{
+    app.listen(process.env.PORT || 8000,()=>{
+        console.log("Server is running at port: "+process.env.PORT);
+    })
+})
+.catch((err)=>{
+    console.log("MongoDb connection failed !!!",err);
+})
+
+
+
 
 
 
