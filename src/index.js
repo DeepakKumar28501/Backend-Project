@@ -3,8 +3,8 @@
 import dotenv from "dotenv";
 import connectDB from "./db/index.js";
 import express from "express";
-const app=express();
-
+// const app=express();
+import {app} from './app.js';
 // export{ app };
 // when we use dotenv improved version then need to configure that 
 dotenv.config({
