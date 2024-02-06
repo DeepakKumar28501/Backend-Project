@@ -47,7 +47,7 @@ const userSchema=new Schema({
 // here we use async because pre is a middleware that takes some time to process it 
 userSchema.pre("save",async function(next){
     if(!this.isModified("password")) return next();
-    this.password=bcrypt.hash(this.password,10)// number is a round for encrypt
+    this.password= await bcrypt.hash(this.password,10)// number is a round for encrypt
     next()
    
     
